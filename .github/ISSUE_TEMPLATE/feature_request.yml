@@ -1,0 +1,33 @@
+name: 功能建议
+description: 说明使用场景与希望改善的结果
+title: "[建议] "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: 使用场景与困难
+      description: 谁在什么情况下遇到什么问题，请用虚构数据举例
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: 期望结果
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: 已尝试的替代方式
+  - type: textarea
+    id: impact
+    attributes:
+      label: 影响范围
+      description: 涉及哪些上游、渠道、平台或权限；不提交真实账号信息
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: 提交前核对
+      options:
+        - label: 我已搜索类似建议，内容中没有凭据或个人信息
+          required: true

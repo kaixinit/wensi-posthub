@@ -1,0 +1,75 @@
+name: 故障报告
+description: 报告可复现的功能、投递或界面问题
+title: "[故障] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        请先查阅 README、SUPPORT.md 和故障处理手册。安全问题按 SECURITY.md 私下报告。
+        不要提交密钥、完整专属推送地址、授权码、数据库、个人收件信息或业务正文。
+  - type: input
+    id: version
+    attributes:
+      label: 程序版本
+      placeholder: "例如：0.1.25"
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: 运行环境
+      description: 操作系统、Python 版本、安装方式、浏览器与版本
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: 相关功能
+      options:
+        - 安装或启动
+        - 登录或账号
+        - 接入向导或上游 API
+        - 下游绑定
+        - 投递或重试
+        - 网络通信
+        - 页面或文档
+        - 其他
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+      placeholder: |
+        1. 打开哪个页面或调用哪个接口
+        2. 使用虚构配置执行哪些操作
+        3. 发生什么问题
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 预期结果
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: 实际结果
+      description: 如涉及投递，说明页面状态、收件人是否实际收到以及是否重复
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 已脱敏的补充信息
+      description: 可选错误摘要、发生时间、渠道类型、系统网络或代理方式、脱敏截图
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: 提交前核对
+      options:
+        - label: 我已查阅帮助并搜索类似问题
+          required: true
+        - label: 我已移除截图与文本中的凭据、个人信息和业务内容
+          required: true

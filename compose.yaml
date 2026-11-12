@@ -1,0 +1,11 @@
+services:
+  posthub:
+    build: .
+    ports:
+      - "127.0.0.1:8787:8787"
+    volumes:
+      - posthub-data:/data
+    restart: unless-stopped
+    stop_grace_period: 110s
+volumes:
+  posthub-data:

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>文思邮差 · 消息中转与分发平台</title>
+  <link rel="icon" href="/icons/logo.svg?v=0.1.25" type="image/svg+xml">
+  <link rel="preload" href="/fonts/NotoSansSC-ui.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/style.css?v=0.1.25">
+  <script src="/help-data.js?v=0.1.25" defer></script>
+  <script src="/help.js?v=0.1.25" defer></script>
+  <script src="/weixin.js?v=0.1.25" defer></script>
+  <script src="/network.js?v=0.1.25" defer></script>
+  <script src="/email.js?v=0.1.25" defer></script>
+  <script src="/account.js?v=0.1.25" defer></script>
+  <script src="/setup.js?v=0.1.25" defer></script>
+  <script src="/recovery.js?v=0.1.25" defer></script>
+  <script src="/app.js?v=0.1.25" defer></script>
+</head>
+<body>
+  <div id="login" class="login-screen" hidden>
+    <form id="login-form" class="login-card">
+      <img class="login-logo" src="/icons/logo.svg?v=0.1.25" alt="">
+      <h1>文思邮差</h1><p>消息中转与分发平台</p>
+      <label>管理员账号<input name="username" value="admin" type="text" autocomplete="username" required maxlength="80"></label>
+      <label>管理员密码<input name="password" type="password" autocomplete="current-password" required maxlength="256"></label>
+      <p id="login-error" class="error" role="alert"></p>
+      <button class="primary" type="submit">登录工作台</button>
+      <small>默认账号：admin。初始密码由安装程序提供，登录后可在“账号设置”修改。</small>
+    </form>
+  </div>
+  <div id="shell" hidden>
+    <aside class="sidebar">
+      <a class="brand" href="#channels"><img src="/icons/logo.svg?v=0.1.25" alt=""><span><b>文思邮差</b><small>消息中转与分发平台</small></span></a>
+      <nav aria-label="主导航">
+        <a href="#setup" data-page="setup"><img src="/icons/link.svg" alt="">接入向导</a>
+        <a href="#dashboard" data-page="dashboard"><img src="/icons/home.svg" alt="">分发工作台</a>
+        <a href="#apps" data-page="apps"><img src="/icons/app.svg" alt="">上游分发</a>
+        <a href="#channels" data-page="channels"><img src="/icons/users.svg" alt="">下游渠道</a>
+        <a href="#records" data-page="records"><img src="/icons/records.svg" alt="">投递记录</a>
+        <a href="#alerts" data-page="alerts"><img src="/icons/bell.svg" alt="">告警中心<span id="alert-count"></span></a>
+        <hr>
+        <a href="#compose" data-page="compose"><img src="/icons/settings.svg" alt="">系统分发</a>
+        <a href="#network" data-page="network"><img src="/icons/globe.svg" alt="">网络通信</a>
+        <a href="#account" data-page="account"><img src="/icons/users.svg" alt="">账号设置</a>
+        <a href="#help" data-page="help"><img src="/icons/book.svg" alt="">使用帮助</a>
+      </nav>
+      <div class="sidebar-bottom"><span>文思邮差 0.1.25</span><button data-action="logout" class="icon-button" aria-label="退出登录"><img src="/icons/logout.svg" alt=""></button></div>
+    </aside>
+    <div class="workspace"><header class="topbar"><span id="worker-status">正在连接…</span><span id="clock"></span><a class="admin-label" href="#account" title="账号设置">admin</a><button class="icon-button mobile-logout" data-action="logout" aria-label="退出登录"><img src="/icons/logout.svg" alt=""></button></header><main id="content" tabindex="-1"></main></div>
+  </div>
+  <dialog id="dialog" aria-labelledby="dialog-title"><div id="dialog-body"></div></dialog>
+  <dialog id="choice-dialog" aria-labelledby="choice-title"></dialog>
+  <div id="toast" role="status" popover="manual" hidden></div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+# Append this proxy to your existing frpc.toml.
+# Keep your existing serverAddr, serverPort and authentication settings.
+# frpc and Wensi Postman run on the same internal machine in this example.
+[[proxies]]
+name = "posthub"
+type = "tcp"
+localIP = "127.0.0.1"
+localPort = 8787
+remotePort = 18087

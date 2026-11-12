@@ -1,0 +1,120 @@
+name: Release checks
+"on": [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+env:
+  PYTHONIOENCODING: utf-8
+  PIP_DISABLE_PIP_VERSION_CHECK: '1'
+jobs:
+  test:
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-24.04]
+        python: ['3.11', '3.12', '3.13']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install -r requirements.lock
+      - run: python -m pip install -e ".[test]"
+      - run: python scripts/build_help.py --check
+      - run: python scripts/check_release.py --json artifacts/release-check.json
+      - run: python -m pytest --junitxml=artifacts/tests.xml
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: tests-${{ matrix.os }}-python-${{ matrix.python }}
+          path: |
+            artifacts/tests.xml
+            artifacts/release-check.json
+          retention-days: 14
+  debian:
+    runs-on: ubuntu-24.04
+    container: python:3.11-bookworm
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - run: python -m pip install -r requirements.lock
+      - run: python -m pip install -e '.[test]'
+      - run: python scripts/build_help.py --check
+      - run: python scripts/check_release.py
+      - run: bash -n deploy/install.sh deploy/start.sh
+      - run: python -m pytest --junitxml=artifacts/tests.xml
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: debian-bookworm-tests
+          path: artifacts/tests.xml
+          retention-days: 14
+  browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -r requirements.lock
+      - run: python -m pip install -e '.[test]' playwright
+      - run: python -m playwright install --with-deps chromium
+      - run: python scripts/ci_browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: browser-checks
+          path: |
+            artifacts/browser-onboarding/
+            artifacts/browser-account/
+            artifacts/browser-app_channels/
+            artifacts/browser-help/
+            artifacts/browser-weixin_recovery/
+          retention-days: 14
+  wheel:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -r requirements.lock
+      - run: python scripts/check_release.py
+      - run: python scripts/export_source.py --output dist/posthub-source.zip
+      - run: python -m pip wheel . --no-deps --wheel-dir dist
+      - run: python -m venv .wheel-check
+      - run: .wheel-check/bin/python -m pip install -r requirements.lock dist/*.whl
+      - run: .wheel-check/bin/python scripts/smoke_installed.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: release-candidates
+          path: |
+            dist/*.whl
+            dist/posthub-source.zip
+            dist/posthub-source.sha256
+          retention-days: 14
+  installer:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-24.04]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -r requirements.lock
+      - run: python -m pip wheel . --no-deps --wheel-dir dist
+      - run: python scripts/export_installer.py --wheel dist/posthub-0.1.25-py3-none-any.whl --output dist/posthub-installer.zip
+      - run: python tests/installer_acceptance.py --package dist/posthub-installer.zip --work-dir artifacts/install-work --artifacts artifacts/install-check
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: installer-${{ matrix.os }}
+          path: artifacts/install-check/results.json
+          retention-days: 14

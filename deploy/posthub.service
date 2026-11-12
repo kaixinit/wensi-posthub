@@ -1,0 +1,24 @@
+[Unit]
+Description=Wensi Postman notification relay
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=posthub
+Group=posthub
+WorkingDirectory=/opt/posthub
+Environment=POSTHUB_DATA_DIR=/var/lib/posthub
+ExecStart=/opt/posthub/.venv/bin/python -m posthub serve --host 127.0.0.1 --port 8787
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=110
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/posthub
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,34 @@
+name: 使用咨询
+description: 安装、接入或配置操作方面的问题
+title: "[咨询] "
+body:
+  - type: markdown
+    attributes:
+      value: 安全问题使用 SECURITY.md 中的私密报告流程；此表单是公开 Issue。
+  - type: textarea
+    id: context
+    attributes:
+      label: 环境与目标
+      description: 程序版本、操作系统，以及希望完成的操作
+    validations:
+      required: true
+  - type: textarea
+    id: attempted
+    attributes:
+      label: 已阅读或尝试的步骤
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: 具体问题
+      description: 如需要私密联系方式，只说明请求，不公开敏感细节
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: 提交前核对
+      options:
+        - label: 我已移除凭据、个人收件信息和业务消息
+          required: true

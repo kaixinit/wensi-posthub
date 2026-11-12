@@ -1,0 +1,7 @@
+Noto Sans SC variable font, complete character set.
+Source: https://github.com/google/fonts/tree/main/ofl/notosanssc
+License: SIL Open Font License 1.1; see OFL.txt.
+Converted losslessly from TTF to WOFF2 with fontTools.
+Downloaded: 2026-11-11
+Source SHA256: a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da
+WOFF2 SHA256: aa57c1cc20a773aec8a43782db3c6f1ca6a19813fd1423e14a005e118c4535c0
