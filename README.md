@@ -8,7 +8,7 @@
 
 当前程序版本 **0.1.25**，处于早期试用阶段。Python 包与命令仍叫 `posthub`，已有 API 地址、`ph_` 密钥和数据目录继续使用。项目许可状态见 [许可说明](#许可说明)。
 
-[快速上手](docs/guide/01-quickstart.md) · [完整操作手册](docs/README.md) · [第一版发布说明](docs/releases/v0.1.25.md) · [更新日志](CHANGELOG.md) · [测试范围](docs/TESTING.md) · [问题反馈](SUPPORT.md)
+[下载安装包](https://github.com/kaixinit/wensi-posthub/releases/tag/v0.1.25) · [快速上手](docs/guide/01-quickstart.md) · [完整操作手册](docs/README.md) · [第一版发布说明](docs/releases/v0.1.25.md) · [更新日志](CHANGELOG.md) · [测试范围](docs/TESTING.md) · [问题反馈](SUPPORT.md)
 
 ![接入向导：创建上游、配置下游、试发确认、接通上游](docs/images/onboarding.png)
 
@@ -43,7 +43,7 @@
 
 ## 安装并打开
 
-普通用户可使用单独的正式安装包：解压后按包内 `INSTALL.md` 操作。它只包含一份完整程序、运行依赖清单和安装/升级脚本；升级前自动保存配套数据备份。详细步骤见 [正式安装包与升级](docs/INSTALLER.md)。下列命令适用于源码包。
+普通用户可在 [GitHub 第一版发布页](https://github.com/kaixinit/wensi-posthub/releases/tag/v0.1.25) 下载 **文思邮差-0.1.25.zip**：解压后按包内 `INSTALL.md` 操作。它只包含一份完整程序、运行依赖清单和安装/升级脚本；升级前自动保存配套数据备份。详细步骤见 [正式安装包与升级](docs/INSTALLER.md)。下列命令适用于源码包。
 
 需要 **Python 3.11+**。Windows 11 / Python 3.11 已实测；正式包的 **Debian 12 / Python 3.11、Ubuntu 24.04 / Python 3.12** 安装与升级已在独立 Linux 虚拟机通过，见 [Linux 验收](docs/LINUX-REVIEW.md)。Docker、其他版本与 GitHub 远端 CI 的状态见 [测试范围](docs/TESTING.md)。
 

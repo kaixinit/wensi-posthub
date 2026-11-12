@@ -2,6 +2,8 @@
 
 日期：2026-11-12（Asia/Shanghai）。程序版本：0.1.25。
 
+本页保留首次 GitHub 上传前的本地验收快照。“尚未公开”“未运行远端 CI”等表述对应记录当时的状态；后续结果见 [GitHub 发布页](https://github.com/kaixinit/wensi-posthub/releases) 与 [Actions](https://github.com/kaixinit/wensi-posthub/actions/workflows/test.yml)。
+
 **结论：本地文档、协作文件、Windows 回归和安装包检查通过；尚未公开发布，远端 CI 与 Docker 验收仍待完成。后续同日已完成 [Debian / Ubuntu 虚拟机安装升级验收](LINUX-REVIEW.md)。**
 
 ## 完成内容

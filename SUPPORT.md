@@ -4,13 +4,13 @@
 
 ## 选择合适的入口
 
-在项目将来发布的 GitHub 仓库 Issues → New issue 中选择：
+在 [GitHub 问题反馈](https://github.com/kaixinit/wensi-posthub/issues/new/choose) 中选择：
 
 - **故障报告**：功能没有按说明工作，附复现步骤与实际投递状态。
 - **功能建议**：描述使用场景、目前遇到的困难和期望结果。
 - **使用咨询**：安装、渠道权限、地址配置等操作问题。
 
-本分发包尚未关联远端仓库，不提供虚构的仓库 URL 或支持邮箱。由维护者发布后使用该仓库的 Issues。文件存在不表示远端 Issues、Actions 或私密漏洞报告已开启。
+项目仓库为 [kaixinit/wensi-posthub](https://github.com/kaixinit/wensi-posthub)。公开问题通过 Issues 处理；安全问题使用下方私密报告流程。项目未预设支持邮箱。
 
 ## 故障报告需要什么
 

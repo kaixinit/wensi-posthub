@@ -6,7 +6,7 @@
 
 ## 私密报告
 
-发布到 GitHub 后，维护者应先在仓库启用 **Private vulnerability reporting**。启用后可在 Security / Security and quality → Report a vulnerability 私密报告。`SECURITY.md` 文件本身不会开启该功能。
+项目仓库已启用 **Private vulnerability reporting**，可使用 [私密漏洞报告入口](https://github.com/kaixinit/wensi-posthub/security/advisories/new)。在分叉仓库中部署时，仍需由该仓库维护者单独启用；`SECURITY.md` 文件本身不会开启该功能。
 
 若没有此按钮，也没有维护者已公布的私密联系方式，请只创建“请求安全联系方式”的 Issue，不公开漏洞步骤、利用代码、真实消息或凭据。取得私密渠道后再提供细节。项目不预设支持邮箱，私密报告入口以当前仓库的实际设置为准。
 

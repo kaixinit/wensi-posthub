@@ -26,9 +26,9 @@ QQ、微信、QQ 邮箱共 6 次投递都有成功回执，用户确认三个渠
 | 范围 | 状态 |
 | --- | --- |
 | 物理 Linux、其他发行版版本、ARM、systemd 自启 | 本轮仅覆盖上述 x86_64 虚拟机内安装升级与启动脚本 |
-| GitHub Actions 矩阵 | 工作流已提供，远端通过记录待取得 |
+| GitHub Actions 矩阵 | 运行状态及日志见 [对应提交的 Actions 记录](https://github.com/kaixinit/wensi-posthub/actions/workflows/test.yml) |
 | Docker | 配置已提供，镜像构建与运行待验收 |
-| Python 3.13 | 已列入 CI 矩阵，尚未实际执行；3.12 已覆盖上述 Ubuntu 安装升级场景 |
+| Python 3.13 | 已列入远端 CI 矩阵，结果以 [对应提交的运行记录](https://github.com/kaixinit/wensi-posthub/actions/workflows/test.yml) 为准；本地 Linux 专项仅覆盖 3.11 / 3.12 |
 | Gmail / 微软 / 企业微信 / 钉钉 / 飞书 / Apprise 具体服务 | 有适配器、模拟或协议测试，尚未完成全部真实账号收件验收 |
 | 性能、多实例和完整无障碍认证 | 未做相关认证或容量承诺；当前仅支持单服务进程 |
 
